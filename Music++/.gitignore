@@ -1,6 +1,6 @@
-.vs/
+/Debug/
+Music++.sln
 
-*.sln
 *.vcxproj
 *.filters
 *.user
