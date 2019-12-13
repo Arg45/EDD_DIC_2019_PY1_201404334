@@ -1,6 +1,8 @@
 .vs
 
 *.vcxproj
+*.filters
+*.user
 
 # Prerequisites
 
