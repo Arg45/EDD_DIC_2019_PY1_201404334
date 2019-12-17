@@ -12,10 +12,12 @@
 
 using namespace std;
 
-class menuClase {
+class Menu {
 public:
-	menuClase();
+	Menu();
 	void menu1();
+	void menu2();
+	void edd();
 	int var1;
 	string ruta;
 private:

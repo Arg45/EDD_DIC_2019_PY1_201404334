@@ -2,9 +2,9 @@
 #define COLA_H
 #include "nodo.h"
 
-class cola {
+class Cola {
 public:
-	cola();
+	Cola();
 	nodo* inicio;
 	nodo* fin;
 	void insertar(int id);

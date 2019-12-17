@@ -4,12 +4,12 @@
 #include <ostream>
 #include <iostream>
 
-cola::cola() {
+Cola::Cola() {
 	inicio = NULL;
 	fin = NULL;
 
 }
-void cola::insertar(int id) {
+void Cola::insertar(int id) {
 	nodo *nuevo = new nodo(id);
 	if (inicio == NULL) {
 		inicio = nuevo;
@@ -20,7 +20,7 @@ void cola::insertar(int id) {
 		fin = nuevo;
 	}
 }
-void cola::mostrar() {
+void Cola::mostrar() {
 	nodo* aux = inicio;
 	while (aux != NULL) {
 		std::cout << aux->ID << std::endl;
@@ -28,7 +28,7 @@ void cola::mostrar() {
 
 	}
 }
-void cola::eliminar() {
+void Cola::eliminar() {
 	inicio = inicio->siguiente;
 }
 

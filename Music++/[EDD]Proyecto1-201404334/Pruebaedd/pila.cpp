@@ -2,11 +2,11 @@
 #include <iostream>
 #include <stdlib.h>
 
-pila::pila() {
+Pila::Pila() {
 	inicio = NULL;
 	fin = NULL;
 }
-void pila::insertar(int id) {
+void Pila::insertar(int id) {
 	nodo* nuevo = new nodo(id);
 	if (inicio == NULL) {
 		inicio = nuevo;
@@ -17,14 +17,14 @@ void pila::insertar(int id) {
 		inicio = nuevo;
 	}
 }
-void pila::mostrar() {
+void Pila::mostrar() {
 	nodo *aux = inicio;
 	while (aux != NULL) {
 		std::cout << aux->ID << std::endl;
 		aux = aux->siguiente;
 	}
 }
-void pila::eliminar() {
+void Pila::eliminar() {
 	inicio = inicio->siguiente;
 }
 

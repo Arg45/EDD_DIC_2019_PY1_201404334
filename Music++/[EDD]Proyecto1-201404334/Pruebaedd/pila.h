@@ -3,9 +3,9 @@
 #define PILA_H
 #include "nodo.h"
 
-class pila {
+class Pila {
 public:
-	pila();
+	Pila();
 	nodo* inicio;
 	nodo* fin;
 	void insertar(int id);
