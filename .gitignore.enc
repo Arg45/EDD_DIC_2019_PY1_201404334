@@ -19,3 +19,4 @@
 *.json
 Programa/.vs/Programa/v15/.suo
 *.opendb
+#no carga bien el gitignore
