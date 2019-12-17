@@ -1,6 +1,7 @@
 
 *.db
-/.vs/EDD_DIC_2019_PY1_201404334/v15/.suo
+#.vs/EDD_DIC_2019_PY1_201404334/v15/.suo
+.vs/
 *.ipch
 *.obj
 *.tlog
