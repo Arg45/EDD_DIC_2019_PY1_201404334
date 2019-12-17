@@ -12,7 +12,7 @@ Menu::Menu() {
 	cout << " Seleccione el indice de la opcion que desee:\n\n  1. Cargar archivo .json\n  2. Salir\n" << endl;
 	cin >> var1;
 	try {
-		if (var1 > 0 && var1 < 3 /*&& isdigit(var1)*/ ){
+		if (var1 > 0 && var1 < 3 /*&& isdigit(var1)*/ ){//hay que validar que solo permita digitos
 			Menu::menu1();
 		}
 		else {
@@ -26,24 +26,32 @@ Menu::Menu() {
 	
 }
 void Menu::menu1() {
+	cout << " Seleccione el indice de la opcion que desee:\n\n  1. Library\n  2. Playlist\n  3. Regresar\n" << endl;
+	cin >> var1;
 	switch (var1)
 	{
 	case 1:
-		cout << "cargando" << endl;
-
+		cout << "  Ingrese la ruta del archivo: " << endl;
+		cin >> urlOriginal;
+		cout << "Ruta ingresada correctamente0" << endl;
 		break;
 	case 2:
-		cout << "  Que tenga un buen dia\n" << endl;
+		cout << "  Ingrese la ruta del archivo: " << endl;
+		cin >> urlOriginal;
+		cout << "Ruta ingresada correctamente0" << endl;
+		break;
+	case 3:
+		Menu();
 		break;
 	default:
 		cout << " La opcion seleccionada no es valida, intentelo de nuevo.\n" << endl;
-		Menu();
+		menu1();
 		break;
 	}
 }
 void Menu::menu2() {
 	cout << "ingrese ruta" << endl;
-	cin >> ruta;
+	//cin >> ruta;
 	cout << "ruta ingresada" << endl;
 }
 

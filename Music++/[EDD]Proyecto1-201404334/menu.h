@@ -19,7 +19,7 @@ public:
 	void menu2();
 	void edd();
 	int var1;
-	string ruta;
+	string urlOriginal;
 private:
 
 };
