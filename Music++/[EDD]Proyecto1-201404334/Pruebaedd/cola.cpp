@@ -1,5 +1,5 @@
 #include "cola.h"
-#include "nodo.cpp"
+#include "nodo.h"
 #include <stdlib.h>
 #include <ostream>
 #include <iostream>

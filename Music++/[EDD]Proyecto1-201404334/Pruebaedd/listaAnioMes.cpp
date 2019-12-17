@@ -32,6 +32,7 @@ bool listaAnioMes::existe(int pos) {
 			aux = aux->siguiente;
 		}
 	}
+	return false;
 }
 nodoAM* listaAnioMes::devolverNodo(int pos) {
 	nodoAM* aux = inicio;
@@ -43,4 +44,5 @@ nodoAM* listaAnioMes::devolverNodo(int pos) {
 			aux = aux->siguiente;
 		}
 	}
+	return false;
 }

@@ -6,8 +6,8 @@
 using namespace std;
 
 menuClase::menuClase() {
-	//cout << "menu en otra clase" << endl;
-	var1;
+	cout << "menu en otra clase" << endl;
+	/*var1;
 	cout << " Seleccione el indice de la opcion que desee:\n\n  1. Cargar archivo .json\n  2. Salir\n" << endl;
 	cin >> var1;
 	switch (var1)
@@ -23,7 +23,7 @@ menuClase::menuClase() {
 		cout << "-La opcion seleccionada no es valida, intentelo de nuevo.\n" << endl;
 		menuClase();
 		break;
-	}
+	}*/
 }
 void menuClase::menu1() {
 	cout << "ingrese ruta" << endl;
