@@ -17,7 +17,7 @@ Albumes::Albumes() {
 	filas->arriba = raiz;
 	*/
 }
-void Albumes::insertarnodo(string nombre, string mes, string anio, float rating){
+void Albumes::insertar(string nombre, string mes, string anio, float rating){
 	Album* nuevo = new Album(nombre, mes, anio, rating);
 	if (obtenerColumna(anio) == NULL) {
 		insertarAnio(anio);

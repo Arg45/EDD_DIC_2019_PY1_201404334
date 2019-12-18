@@ -9,6 +9,7 @@
 using namespace std;
 
 Abrir::Abrir(string url, int tipo) {
+	cout << "entra al metodo abrir, de la clase abrir" << endl;
 	string l,texto="";
 	ifstream archivos(url);//cambiar nombre a las x variables!
 	if (archivos.is_open()) {
@@ -55,7 +56,7 @@ void Abrir::leerLibreria(Json::Value libreria) {
 		artista = libreria[i]["Artist"]["Albums"];
 		promedioAlbum = 0.0;
 		cantAlbums = 0;
-		Albumes* a = new Albumes();
+		Albumes* alb = new Albumes();
 		int j;
 		for (j = 0; j < artista.size(); j++) {
 			nombreAlbum = artista[j]["Name"].asString();
@@ -65,9 +66,23 @@ void Abrir::leerLibreria(Json::Value libreria) {
 			cantAlbums++;
 			promedioCancion = 0.0;
 			cantCanciones = 0;
-			Canciones* c = new Canciones();
-			for
+			Canciones* can = new Canciones();
+			int k;
+			for (k = 0; k < album.size(); k++) {
+				nombreCancion = album[k]["Name"].asString();
+				ratingCancion = atof(album[k]["Rating"].asString().c_str());
+				cantCanciones++;
+				promedioCancion += ratingCancion;
+				can->insertar(nombreCancion, ratingCancion);
+				cout <<" a. " <<nombreCancion <<" "<< endl;
+			}
+			ratingAlbum = promedioCancion / cantCanciones;
+			promedioAlbum += ratingAlbum;
+			Albumes* alb = new Albumes();
+			alb->insertar(nombreAlbum, mes, anio, ratingAlbum);
 		}
+		ratingArtista = promedioAlbum / cantAlbums;
+		//aqui va lo de artista
 	}	
 }
 void Abrir::leerListaR(Json::Value libreria, string nombre) {

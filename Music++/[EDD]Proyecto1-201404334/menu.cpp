@@ -1,6 +1,7 @@
 #pragma once
 
 #include "menu.h"
+#include "abrir.h"
 
 using namespace std;
 
@@ -31,9 +32,10 @@ void Menu::menu1() {
 		cout << "  Ingrese la ruta del archivo: " << endl;
 		cin.get();
 		getline(cin,urlOriginal);
-		cout << "\' " << urlOriginal <<" \'"<< endl;
+		Abrir::Abrir(urlOriginal, 1);
+		//cout << "\' " << urlOriginal <<" \'"<< endl;
 		
-		cout << "Ruta ingresada correctamente" << endl;
+		cout << "\nRuta ingresada correctamente" << endl;
 		break;
 	case 2:
 		cout << "  Ingrese la ruta del archivo: " << endl;
