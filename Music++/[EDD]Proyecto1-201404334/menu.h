@@ -17,7 +17,6 @@ public:
 	Menu();
 	void menu1();
 	void menu2();
-	void edd();
 	int var1;
 	string urlOriginal;
 private:
