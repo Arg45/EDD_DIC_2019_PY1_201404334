@@ -14,6 +14,7 @@ public:
 	Album* obtenerColumna(string anio);
 	void insertarMes(string mes);
 	void insertarAnio(string anio);
+	void insertarAlbum(string nombre, string mes, string anio, float rating);
 private:
 
 };

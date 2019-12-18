@@ -31,7 +31,20 @@ void Albumes::insertarnodo(string nombre, string mes, string anio, float rating)
 	else {
 		cout << " Fila existe " << endl;
 	}
+	insertarAlbum(nombre, mes, anio, rating);
 
+}
+void Albumes::insertarAlbum(string nombre, string mes, string anio, float rating) {
+	Album* auxC = obtenerColumna(anio);
+	Album* auxF = obtenerFila(mes);
+	Album* nuevo = new Album(nombre, mes, anio, rating);
+
+	//Insercion en 2do recorrido 
+	// Columna
+	//   vacia 
+	if () {
+	
+	}
 }
 
 void Albumes::insertarAnio(string anio) {
@@ -45,38 +58,49 @@ void Albumes::insertarAnio(string anio) {
 	else {
 		Album* aux = raiz;
 		while (aux != NULL) {
-			
+			if (aux->nombre<anio && aux->derecha==NULL) {
+				nuevo->derecha = NULL;
+				nuevo->izquierda = aux;
+				aux->derecha = nuevo;
+			}
+			else if (aux->nombre<anio && aux->derecha->nombre>anio) {
+				nuevo->derecha = aux->derecha;
+				aux->derecha = nuevo;
+				nuevo->izquierda = aux;
+				aux->derecha = nuevo;
+			}
+			else {
+				aux = aux->derecha;
+			}
 		}
 	}
-	/*
-	//vacia
-        if(listaColumna == null){
-            inicio.setSiguienteColumna(nuevo);
-            nuevo.setAnteriorColumna(inicio);
-            finCol = nuevo;
-        }else{ 
-            //en medio y final
-            NodoMatriz auxiliar = inicio;
-            while(auxiliar!= null){
-                //al final
-                if(auxiliar.getIdColumna()< columna && auxiliar.getSiguienteColumna()==null){                    
-                    nuevo.setSiguienteColumna(null);
-                    nuevo.setAnteriorColumna(auxiliar);
-                    auxiliar.setSiguienteColumna(nuevo);
-                    finCol = nuevo;
-                //en medio
-                }else if(auxiliar.getIdColumna()< columna && auxiliar.getSiguienteColumna().getIdColumna()>columna){  
-                    nuevo.setSiguienteColumna(auxiliar.getSiguienteColumna());
-                    auxiliar.getSiguienteColumna().setAnteriorColumna(nuevo);
-                    nuevo.setAnteriorColumna(auxiliar);
-                    auxiliar.setSiguienteColumna(nuevo);
-                }else{	
-                    auxiliar = auxiliar.getSiguienteColumna();
-                }
-            }            
-        }
-	*/
-
+}
+void Albumes::insertarMes(string mes) {
+	Album* listames = raiz;
+	Album* nuevo = new Album("", mes,"", 0.0);
+	if (listames == NULL) {
+		raiz->abajo= nuevo;
+		nuevo->arriba = raiz;
+	}
+	else {
+		Album* aux = raiz;
+		while (aux != NULL) {
+			if (aux->nombre < mes && aux->abajo == NULL) {
+				nuevo->abajo = NULL;
+				nuevo->arriba = aux;
+				aux->abajo = nuevo;
+			}
+			else if (aux->nombre<mes && aux->abajo->nombre>mes) {
+				nuevo->abajo = aux->abajo;
+				aux->abajo = nuevo;
+				nuevo->arriba = aux;
+				aux->abajo = nuevo;
+			}
+			else {
+				aux = aux->abajo;
+			}
+		}
+	}
 }
 
 Album* Albumes::obtenerColumna(string anio) {
