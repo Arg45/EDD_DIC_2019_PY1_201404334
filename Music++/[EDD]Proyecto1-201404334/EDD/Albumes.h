@@ -1,0 +1,22 @@
+#pragma once
+
+#ifndef ALBUMES_H
+#define ALBUMES_H
+
+#include "album.h"
+
+class Albumes {
+public:
+	Album* raiz;
+	Albumes();
+	void insertarnodo(string nombre, string mes, string anio, float rating);
+	Album* obtenerFila(string mes);
+	Album* obtenerColumna(string anio);
+	void insertarMes(string mes);
+	void insertarAnio(string anio);
+private:
+
+};
+
+#endif /*ALBUMES_H */
+

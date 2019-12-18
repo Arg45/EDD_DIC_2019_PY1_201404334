@@ -9,7 +9,7 @@ using namespace std;
 
 class listaAnioMes {
 public:
-	//string nombre;
+	string nombre;
 	nodoAM* d;
 	nodoAM* inicio;
 	nodoAM* fin;

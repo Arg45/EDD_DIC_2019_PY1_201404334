@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "Pruebaedd/abrir.h"
+#include "abrir.h"
 
 using namespace std;
 

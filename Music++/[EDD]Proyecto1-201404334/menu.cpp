@@ -32,13 +32,16 @@ void Menu::menu1() {
 	{
 	case 1:
 		cout << "  Ingrese la ruta del archivo: " << endl;
-		cin >> urlOriginal;
-		cout << "Ruta ingresada correctamente0" << endl;
+		cin.get();
+		getline(cin,urlOriginal);
+		cout << "\' " << urlOriginal <<" \'"<< endl;
+		
+		cout << "Ruta ingresada correctamente" << endl;
 		break;
 	case 2:
 		cout << "  Ingrese la ruta del archivo: " << endl;
-		cin >> urlOriginal;
-		cout << "Ruta ingresada correctamente0" << endl;
+		getline(cin, urlOriginal);
+		cout << "Ruta ingresada correctamente" << endl;
 		break;
 	case 3:
 		Menu();

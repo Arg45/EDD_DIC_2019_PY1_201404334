@@ -12,9 +12,10 @@ using namespace std;
 class Canciones {
 public:
 	Canciones();
-	void insertarAlInicio(string nom, double rat);
-	void insertarAlFinal(string nom, double rat);
-	void insertarIndice(string nom, double rat, int index);
+	void insertar(string nom, float rat);
+	void insertarAlInicio(string nom, float rat);
+	void insertarAlFinal(string nom, float rat);
+	void insertarIndice(string nom, float rat, int index);
 
 	bool estaVacia();
 

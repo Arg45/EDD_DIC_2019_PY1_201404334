@@ -3,31 +3,23 @@
 #ifndef ALBUM_H
 #define ALBUM_H
 
-#include <string>
 #include "Canciones.h"
-#include "Pruebaedd/listaAnioMes.h"
+#include <string>
 
 class Album {
 public:
-	string nombre;
-	int fila;
-	int columna;
-	string mes;
-	string anio;
-	double rating;
+	string nombre, mes, anio;
+	float rating;
 	Canciones* listaCanciones;
-
-	Album* derecha;
-	Album* izquierda;
+	Album* derecha;//columnas
+	Album* izquierda;//filas
 	Album* arriba;
 	Album* abajo;
-	listaAnioMes* arriba;
-	listaAnioMes* izquierda;
-	Album();
-	Album(int fil, int col, string nom);
+	Album* z;
+	Album(string nombre, string mes, string anio, float rating);
+
 private:
 
 };
 
 #endif /*ALBUM_H */
-

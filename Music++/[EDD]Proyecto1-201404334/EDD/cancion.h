@@ -11,8 +11,7 @@ class cancion {
 public:
 	cancion();
 	cancion(string nombre, double rat);
-	string nombre;
-	string tipo;
+	string nombre, tipo;
 	double rating;
 	cancion* siguiente;
 private:
