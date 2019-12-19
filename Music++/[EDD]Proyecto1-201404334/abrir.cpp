@@ -8,19 +8,21 @@
 
 using namespace std;
 
-Abrir::Abrir(string url, int tipo) {
+Abrir::Abrir(string ruta, int tipo) {
 	string l,texto="";
-	ifstream archivos(url);//cambiar nombre a las x variables!
+	ifstream archivos(ruta);//cambiar nombre a las x variables!
 	if (archivos.is_open()) {
 		while (getline(archivos,l)){
 			texto += l;
 		}
 	}
 	archivos.close();
-	url = url.substr(url.find("_") + 1, url.find("."));
-	filtro(texto, tipo, url);
+	ruta = ruta.substr(ruta.find("_") + 1, ruta.find("."));
+	cout << "justo antes del metodo filtro" << endl;
+	filtro(texto, tipo, ruta);
+	cout << "justo despues de la llamada a filtro" << endl;
 }
-void Abrir::filtro(string texto, int tipo, string url) {
+void Abrir::filtro(string texto, int tipo, string ruta) {
 	//creacion de char asignandole el parseo del string
 	//inicio del parser
 	const char* c = texto.c_str();
@@ -33,18 +35,20 @@ void Abrir::filtro(string texto, int tipo, string url) {
 		Json::Value archivo;
 		if (tipo == 1) {
 			archivo = r["Library"];
+			cout << "justo antes del metodo leer libreria" << endl;
 			leerLibreria(archivo);
 		}
 		else {
 			archivo = r;
-			leerListaR(archivo, url);
+			leerListaR(archivo, ruta);
 		}
 	}
 }
-bool Abrir::tipoCorrecto(string url) {
-	return (url.substr(url.find_last_of(".") + 1) == "json") ? true : false;
+bool Abrir::tipoCorrecto(string ruta) {
+	return (ruta.substr(ruta.find_last_of(".") + 1) == "json") ? true : false;
 }
 void Abrir::leerLibreria(Json::Value libreria) {
+	cout << "entra al metodo leer libreria" << endl;
 	Json::Value artista, album, cancion;
 	float promedioAlbum, promedioCancion, ratingArtista, ratingAlbum, ratingCancion;
 	int cantAlbums, cantCanciones;
@@ -56,7 +60,7 @@ void Abrir::leerLibreria(Json::Value libreria) {
 		promedioAlbum = 0.0;
 		cantAlbums = 0;
 		Albumes* alb = new Albumes();
-		//cout << "c. " << nombreArtista << endl;
+		cout << "c. " << nombreArtista << endl;
 		int j;
 		for (j = 0; j < artista.size(); j++) {
 			nombreAlbum = artista[j]["Name"].asString();
@@ -67,7 +71,7 @@ void Abrir::leerLibreria(Json::Value libreria) {
 			promedioCancion = 0.0;
 			cantCanciones = 0;
 			Canciones* can = new Canciones();
-			//cout << "b. " << nombreAlbum << endl;
+			cout << "b. " << nombreAlbum << endl;
 			int k;
 			for (k = 0; k < album.size(); k++) {
 				nombreCancion = album[k]["Name"].asString();
@@ -75,7 +79,7 @@ void Abrir::leerLibreria(Json::Value libreria) {
 				cantCanciones++;
 				promedioCancion += ratingCancion;
 				can->insertar(nombreCancion, ratingCancion);
-				//cout <<" a. " <<nombreCancion <<" "<< endl;
+				cout <<" a. " <<nombreCancion <<" "<< endl;
 			}
 			ratingAlbum = promedioCancion / cantCanciones;
 			promedioAlbum += ratingAlbum;
