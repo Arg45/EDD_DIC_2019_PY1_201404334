@@ -19,8 +19,8 @@ public:
 
 	bool estaVacia();
 
-	cancion* inicio;
-	cancion* fin;
+	Cancion* inicio;
+	Cancion* fin;
 private:
 
 };

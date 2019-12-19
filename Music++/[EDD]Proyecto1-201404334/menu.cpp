@@ -7,11 +7,16 @@ using namespace std;
 
 Menu::Menu() {
 	//cout << "menu en otra clase" << endl;
-	cout << " Seleccione el indice de la opcion que desee:\n\n  1. Cargar archivo .json\n  2. Salir\n" << endl;
+	cout << " \n\nSeleccione el indice de la opcion que desee:\n\n  1. Cargar archivo .json\n  2. Salir\n" << endl;
 	cin >> var1;
 	try {
 		if (var1 > 0 && var1 < 3 /*&& isdigit(var1)*/ ){//hay que validar que solo permita digitos
-			Menu::menu1();
+			if (var1 == 1) {
+				Menu::menu1();
+			}
+			else {
+				cout << "----Que tenga un buen dia----" << endl;
+			}
 		}
 		else {
 			throw 45;
@@ -32,14 +37,13 @@ void Menu::menu1() {
 		cout << "  Ingrese la ruta del archivo: " << endl;
 		cin.get();
 		getline(cin,urlOriginal);
-		Abrir::Abrir(urlOriginal, 1);
-		//cout << "\' " << urlOriginal <<" \'"<< endl;
-		
+		Abrir::Abrir(urlOriginal, 1);		
 		cout << "\nRuta ingresada correctamente" << endl;
 		break;
 	case 2:
 		cout << "  Ingrese la ruta del archivo: " << endl;
 		getline(cin, urlOriginal);
+		Abrir::Abrir(urlOriginal, 2);
 		cout << "Ruta ingresada correctamente" << endl;
 		break;
 	case 3:
@@ -52,7 +56,5 @@ void Menu::menu1() {
 	}
 }
 void Menu::menu2() {
-	cout << "ingrese ruta" << endl;
-	//cin >> ruta;
-	cout << "ruta ingresada" << endl;
+
 }

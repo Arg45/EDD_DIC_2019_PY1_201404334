@@ -3,13 +3,13 @@
 #include "cancion.h"
 #include <stdlib.h>
 
-cancion::cancion() {
+Cancion::Cancion() {
 	nombre = "null";
 	tipo = "null";
 	rating = 0.0;
 	siguiente = NULL;
 }
-cancion::cancion(string nom, double rat) {
+Cancion::Cancion(string nom, double rat) {
 	nombre = nom;
 	rating = rat;
 	siguiente = NULL;

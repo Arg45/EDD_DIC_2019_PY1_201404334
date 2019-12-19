@@ -4,6 +4,7 @@
 #include "EDD/Artistas.h"
 #include "EDD/Albumes.h"
 #include "EDD/Canciones.h"
+#include "EDD/cancion.h"
 #include <fstream>
 
 using namespace std;
@@ -18,9 +19,7 @@ Abrir::Abrir(string ruta, int tipo) {
 	}
 	archivos.close();
 	ruta = ruta.substr(ruta.find("_") + 1, ruta.find("."));
-	cout << "justo antes del metodo filtro" << endl;
 	filtro(texto, tipo, ruta);
-	cout << "justo despues de la llamada a filtro" << endl;
 }
 void Abrir::filtro(string texto, int tipo, string ruta) {
 	//creacion de char asignandole el parseo del string
@@ -35,7 +34,6 @@ void Abrir::filtro(string texto, int tipo, string ruta) {
 		Json::Value archivo;
 		if (tipo == 1) {
 			archivo = r["Library"];
-			cout << "justo antes del metodo leer libreria" << endl;
 			leerLibreria(archivo);
 		}
 		else {
@@ -48,7 +46,6 @@ bool Abrir::tipoCorrecto(string ruta) {
 	return (ruta.substr(ruta.find_last_of(".") + 1) == "json") ? true : false;
 }
 void Abrir::leerLibreria(Json::Value libreria) {
-	cout << "entra al metodo leer libreria" << endl;
 	Json::Value artista, album, cancion;
 	float promedioAlbum, promedioCancion, ratingArtista, ratingAlbum, ratingCancion;
 	int cantAlbums, cantCanciones;
@@ -71,7 +68,7 @@ void Abrir::leerLibreria(Json::Value libreria) {
 			promedioCancion = 0.0;
 			cantCanciones = 0;
 			Canciones* can = new Canciones();
-			cout << "b. " << nombreAlbum << endl;
+			cout << " b. " << nombreAlbum << endl;
 			int k;
 			for (k = 0; k < album.size(); k++) {
 				nombreCancion = album[k]["Name"].asString();
@@ -79,17 +76,28 @@ void Abrir::leerLibreria(Json::Value libreria) {
 				cantCanciones++;
 				promedioCancion += ratingCancion;
 				can->insertar(nombreCancion, ratingCancion);
-				cout <<" a. " <<nombreCancion <<" "<< endl;
+				cout <<"  a. " <<nombreCancion <<" "<< endl;
 			}
 			ratingAlbum = promedioCancion / cantCanciones;
 			promedioAlbum += ratingAlbum;
-			Albumes* alb = new Albumes();
 			alb->insertar(nombreAlbum, mes, anio, ratingAlbum);
 		}
 		ratingArtista = promedioAlbum / cantAlbums;
-		//aqui va lo de artista
+		Artista* artista = new Artista(nombreArtista, ratingArtista);
+		artista->albums = alb;
 	}	
 }
 void Abrir::leerListaR(Json::Value libreria, string nombre) {
-
+	string tipo = libreria["Type"].asString();
+	//creacion de edd de playlist
+	Albumes* album;
+	Canciones* cancio;
+	Artista* Nartista;
+	Album* Nalbum;
+	Cancion* Ncancion;
+	string artist;
+	string albu;
+	string mes; 
+	string anio;
+	string cancion;
 }

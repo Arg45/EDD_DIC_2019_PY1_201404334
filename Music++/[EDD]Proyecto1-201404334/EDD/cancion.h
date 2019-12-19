@@ -7,13 +7,13 @@
 
 using namespace std;
 
-class cancion {
+class Cancion {
 public:
-	cancion();
-	cancion(string nombre, double rat);
+	Cancion();
+	Cancion(string nombre, double rat);
 	string nombre, tipo;
 	double rating;
-	cancion* siguiente;
+	Cancion* siguiente;
 private:
 
 };

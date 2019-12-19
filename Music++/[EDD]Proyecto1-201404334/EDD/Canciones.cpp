@@ -11,7 +11,7 @@ Canciones::Canciones() {
 }
 //la lista de canciones no tiene orden!
 void Canciones::insertar(string nom, float rat) {
-	cancion* nuevo = new cancion(nom, rat);
+	Cancion* nuevo = new Cancion(nom, rat);
 	if (estaVacia()) {
 		inicio = fin = nuevo;
 	}
@@ -21,7 +21,7 @@ void Canciones::insertar(string nom, float rat) {
 	}
 }
 void Canciones::insertarAlInicio(string nom, float rat) {
-	cancion* nuevo = new cancion(nom,rat);
+	Cancion* nuevo = new Cancion(nom,rat);
 	//nuevo->nombre = nom;
 	//nuevo->rating = rat;
 	if (estaVacia()) {
@@ -33,7 +33,7 @@ void Canciones::insertarAlInicio(string nom, float rat) {
 	}
 }
 void Canciones::insertarAlFinal(string nom, float rat) {
-	cancion* nuevo = new cancion();
+	Cancion* nuevo = new Cancion();
 	nuevo->nombre = nom;
 	nuevo->rating = rat;
 	if (estaVacia()) {
