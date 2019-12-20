@@ -17,6 +17,7 @@ Albumes::Albumes() {
 	filas->arriba = raiz;
 	*/
 }
+
 void Albumes::insertar(string nombre, string mes, string anio, float rating){
 	Album* nuevo = new Album(nombre, mes, anio, rating);
 	if (obtenerColumna(anio) == NULL) {
@@ -34,6 +35,7 @@ void Albumes::insertar(string nombre, string mes, string anio, float rating){
 	insertarAlbum(nombre, mes, anio, rating);
 
 }
+
 void Albumes::insertarAlbum(string nombre, string mes, string anio, float rating) {
 	Album* auxC = obtenerColumna(anio);
 	Album* auxF = obtenerFila(mes);

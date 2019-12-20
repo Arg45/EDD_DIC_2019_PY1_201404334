@@ -6,7 +6,6 @@ using namespace std;
 
 Pila::Pila() {
 	inicio = fin = NULL;
-	inicio->siguiente = NULL;
 }
 void Pila::insertar(Cancion* c) {
 	NodoPL* nuevo = new NodoPL(c);

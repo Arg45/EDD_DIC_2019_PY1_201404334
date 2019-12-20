@@ -9,8 +9,10 @@ class Artistas {
 public:
 	Artista* inicio;
 	Artista* fin;
+	Albumes* album;
 	Artistas();
 	void insertar(string nombre, float rating);
+	Artista* existe(string nombreArtista);
 private:
 
 };

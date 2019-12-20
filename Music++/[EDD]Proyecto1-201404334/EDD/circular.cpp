@@ -2,8 +2,6 @@
 
 Circular::Circular() {
 	inicio = fin = NULL;
-	inicio->siguiente = inicio;
-	inicio->anterior = inicio;
 }
 void Circular::insertar(Cancion* c) {
 	NodoPL* nuevo = new NodoPL(c);

@@ -44,8 +44,15 @@ void Canciones::insertarAlFinal(string nom, float rat) {
 		fin = nuevo;
 	}
 }
-void Canciones::insertarIndice(string nom, float rat, int index) {
-
+Cancion* Canciones::existe(string c) {
+	Cancion* aux = inicio;
+	while (aux != NULL) {
+		if (aux->nombre==c) {
+			return aux;
+		}
+		aux = aux->siguiente;
+	}
+	return aux;
 }
 bool Canciones::estaVacia() {
 	return (inicio == NULL) ? true : false;

@@ -39,12 +39,15 @@ void Menu::menu1() {
 		getline(cin,urlOriginal);
 		Abrir::Abrir(urlOriginal, 1);		
 		cout << "\nRuta ingresada correctamente" << endl;
+		Menu::menu2();
 		break;
 	case 2:
 		cout << "  Ingrese la ruta del archivo: " << endl;
+		cin.get();
 		getline(cin, urlOriginal);
 		Abrir::Abrir(urlOriginal, 2);
 		cout << "Ruta ingresada correctamente" << endl;
+		Menu::menu2();
 		break;
 	case 3:
 		Menu();
@@ -56,5 +59,23 @@ void Menu::menu1() {
 	}
 }
 void Menu::menu2() {
-
+	cout << " \n\nSeleccione el indice de la opcion que desee:\n" << endl;
+	cout << " 1. Navegacion de biblioteca \n 2. Navegacion de playlist \n 3. Reportes  \n 4. Regresar" << endl;
+	cin >> var1;
+	switch (var1)
+	{
+	case 1:
+		break;
+	case 2:
+		break;
+	case 3:
+		break;
+	case 4:
+		menu1();
+		break;
+	default:
+		cout << " La opcion seleccionada no es valida, intentelo de nuevo.\n" << endl;
+		menu2();
+		break;
+	}
 }

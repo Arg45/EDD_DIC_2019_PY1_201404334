@@ -33,3 +33,13 @@ void Artistas::insertar(string nom, float rat){
 		}
 	}
 }
+Artista* Artistas::existe(string art) {
+	Artista* aux = inicio;
+	while (aux != NULL) {
+		if (aux->nombre == art) {
+			return aux;
+		}
+		aux = aux->siguiente;
+	}
+	return aux;
+}

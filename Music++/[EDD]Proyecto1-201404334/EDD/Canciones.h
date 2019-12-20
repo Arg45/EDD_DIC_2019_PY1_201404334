@@ -16,7 +16,7 @@ public:
 	void insertarAlInicio(string nom, float rat);
 	void insertarAlFinal(string nom, float rat);
 	void insertarIndice(string nom, float rat, int index);
-
+	Cancion* existe(string nombreCancion);
 	bool estaVacia();
 
 	Cancion* inicio;

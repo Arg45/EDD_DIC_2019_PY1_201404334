@@ -6,7 +6,6 @@ using namespace std;
 
 Cola::Cola() {
 	inicio = fin = NULL;
-	inicio->siguiente = NULL;
 }
 void Cola::insertar(Cancion* c) {
 	NodoPL* nuevo = new NodoPL(c);
