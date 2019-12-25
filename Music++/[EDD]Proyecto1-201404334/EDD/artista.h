@@ -13,8 +13,8 @@ public:
 	Albumes* albums;
 	Artista* siguiente;
 	Artista* anterior;
-	Album* existe(string nombreAlbum);
 	Artista(string nombre, float rating);
+	Album* existe(string nombreAlbum);
 private:
 
 };

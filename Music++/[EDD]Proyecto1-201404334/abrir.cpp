@@ -1,9 +1,7 @@
 #pragma once
 
 #include "abrir.h"
-#include "EDD/Artistas.h"
-#include "EDD/Albumes.h"
-#include "EDD/Canciones.h"
+
 #include "EDD/cancion.h"
 #include "EDD/circular.h"
 #include "EDD/queue.h"
@@ -13,17 +11,22 @@
 
 using namespace std;
 
-Abrir::Abrir(string ruta, int tipo) {
-	string l,texto="";
+Abrir::Abrir(string rut, int tip) {
+	ruta = rut;
+	tipo = tip;
+}
+Estructuras Abrir::abrir1() {
+	string l, texto = "";
 	ifstream archivos(ruta);//cambiar nombre a las x variables!
 	if (archivos.is_open()) {
-		while (getline(archivos,l)){
+		while (getline(archivos, l)) {
 			texto += l;
 		}
 	}
 	archivos.close();
 	ruta = ruta.substr(ruta.find("_") + 1, ruta.find("."));
 	filtro(texto, tipo, ruta);
+	return Estructuras(arti, alb, can);
 }
 void Abrir::filtro(string texto, int tipo, string ruta) {
 	//creacion de char asignandole el parseo del string
@@ -60,7 +63,7 @@ void Abrir::leerLibreria(Json::Value libreria) {
 		artista = libreria[i]["Artist"]["Albums"];
 		promedioAlbum = 0.0;
 		cantAlbums = 0;
-		Albumes* alb = new Albumes();
+		alb = new Albumes();
 		//cout << "c. " << nombreArtista << endl;
 		int j;
 		for (j = 0; j < artista.size(); j++) {
@@ -71,7 +74,7 @@ void Abrir::leerLibreria(Json::Value libreria) {
 			cantAlbums++;
 			promedioCancion = 0.0;
 			cantCanciones = 0;
-			Canciones* can = new Canciones();
+			can = new Canciones();
 			//cout << " b. " << nombreAlbum << endl;
 			int k;
 			for (k = 0; k < album.size(); k++) {
@@ -84,12 +87,14 @@ void Abrir::leerLibreria(Json::Value libreria) {
 			}
 			ratingAlbum = promedioCancion / cantCanciones;
 			promedioAlbum += ratingAlbum;
-			alb->insertar(nombreAlbum, mes, anio, ratingAlbum);
+			alb->insertar(nombreAlbum, mes, anio, ratingAlbum, can);
 		}
 		ratingArtista = promedioAlbum / cantAlbums;
-		Artista* artista = new Artista(nombreArtista, ratingArtista);
-		artista->albums = alb;
-	}	
+
+		artist = new Artista(nombreArtista, ratingArtista);
+		artist->albums = alb;
+		arti->insertar(artist);
+	}
 }
 void Abrir::leerListaR(Json::Value libreria, string nombre) {
 	string tipo = libreria["Type"].asString();
@@ -99,13 +104,13 @@ void Abrir::leerListaR(Json::Value libreria, string nombre) {
 	Pila* pil = new Pila();
 	Doble* listaD = new Doble();
 	
-	Artistas* arti;
+	arti = new Artistas();
 	Albumes* album;
-	Canciones* cancio;
+	cancio = new Canciones();
 
-	Artista* Nartista;
+	Artista* Nartista = artist;
 	Album* Nalbum;
-	Cancion* Ncancion;
+	Cancion* Ncancion = new Cancion();
 
 	//arbol
 
@@ -129,23 +134,34 @@ void Abrir::leerListaR(Json::Value libreria, string nombre) {
 
 		Nartista = arti->existe(artist);
 		if (Nartista==NULL) {
-			cout << " La cancion no existe en la libreria." << endl;
-			cout << " No se tomara en cuenta." << endl;
+			cout << "\n El artista no existe en la libreria." << endl;
 		}
-		else {
-			Nalbum = Nartista->existe(albu);
+		else {			
+			bool f = Nartista->albums->existeFila(mes);
+			bool c = Nartista->albums->existeColumna(anio);
+			if ( c && f ) {
+				Album* col = Nartista->albums->obtenerColumna(anio);
+				Album* fil = Nartista->albums->obtenerFila(mes);
+				Nalbum = Nartista->albums->existe(albu, fil, col);
+				if (Nalbum == NULL) {
+					cout << " El album no existe en la libreria." << endl;
+				}
+				else {
+					Ncancion = Nalbum->listaCan->existe(cancion);
+					if (Ncancion == NULL) {
+						cout << " La cancion no existe en la libreria." << endl;
+					}
+				}
+			}
+			else {
+				if (f == NULL) {
+					cout << " No existe album registrado en ese mes. " << endl;
+				}
+				else {
+					cout << " No existe album registrado en ese anio. " << endl;
+				}
+			}
 		}
-
-		Ncancion = cancio->existe(cancion);
-
-
-		cout << "Artista: " << artist << endl;
-		cout << "ALbum: " << albu << endl;
-		cout << "Mes: " << mes << endl;
-		cout << "Anio: " << anio << endl;
-		cout << "Cancion: " << cancion << endl;
-		cout << "----" << endl;
-
 	}
 
 	if (tipo=="Stack") {//pila

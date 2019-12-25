@@ -7,7 +7,7 @@
 using namespace std;
 
 Albumes::Albumes() {
-	raiz = new Album("","","",0.0);
+	raiz = new Album("","","",0.0,NULL);
 	/*
 	Album* columnas = new Album("", "", "anios", 0.0);
 	raiz->derecha = columnas;
@@ -18,8 +18,8 @@ Albumes::Albumes() {
 	*/
 }
 
-void Albumes::insertar(string nombre, string mes, string anio, float rating){
-	Album* nuevo = new Album(nombre, mes, anio, rating);
+void Albumes::insertar(string nombre, string mes, string anio, float rating, Canciones* listaCanciones){
+	Album* nuevo = new Album(nombre, mes, anio, rating, listaCanciones);
 	if (obtenerColumna(anio) == NULL) {
 		insertarAnio(anio);
 	}
@@ -32,14 +32,14 @@ void Albumes::insertar(string nombre, string mes, string anio, float rating){
 	else {
 		cout << " Fila existe " << endl;
 	}
-	insertarAlbum(nombre, mes, anio, rating);
+	insertarAlbum(nombre, mes, anio, rating, listaCanciones);
 
 }
 
-void Albumes::insertarAlbum(string nombre, string mes, string anio, float rating) {
+void Albumes::insertarAlbum(string nombre, string mes, string anio, float rating, Canciones* listaCanciones) {
 	Album* auxC = obtenerColumna(anio);
 	Album* auxF = obtenerFila(mes);
-	Album* nuevo = new Album(nombre, mes, anio, rating);
+	Album* nuevo = new Album(nombre, mes, anio, rating, listaCanciones);
 	/*
 	 Insercion de filas en 2do recorrido 
 	  Columna-Anios
@@ -132,7 +132,7 @@ void Albumes::insertarAlbum(string nombre, string mes, string anio, float rating
 }
 
 void Albumes::insertarAnio(string anio) {
-	Album* nuevo = new Album("", "", anio, 0.0);
+	Album* nuevo = new Album("", "", anio, 0.0,NULL);
 	//vacia
 	if (raiz->derecha == NULL) {
 		raiz->derecha = nuevo;
@@ -176,7 +176,7 @@ void Albumes::insertarAnio(string anio) {
 	}
 }
 void Albumes::insertarMes(string mes) {
-	Album* nuevo = new Album("", mes,"", 0.0);
+	Album* nuevo = new Album("", mes,"", 0.0,NULL);
 	//vacia
 	if (raiz->abajo == NULL) {
 		raiz->abajo= nuevo;
@@ -240,4 +240,52 @@ Album* Albumes::obtenerFila(string mes) {
 		aux = aux->abajo;
 	}
 	return aux;
+}
+
+bool Albumes::existeColumna(string anio) {
+	Album* aux = raiz->derecha;
+	while (aux != NULL) {
+		if (aux->anio == anio) {
+			return true;
+		}
+		aux = aux->abajo;
+	}
+	return false;
+}
+bool Albumes::existeFila(string mes) {
+	Album* aux = raiz->abajo;
+	while (aux != NULL) {
+		if (aux->mes == mes) {
+			return true;
+		}
+		aux = aux->abajo;
+	}
+	return false;
+}
+
+Album* Albumes::existe(string alb, Album* mes, Album* anio) {
+	Album* aux = raiz;
+	while (aux->derecha != NULL)
+	{
+		if (aux->derecha == anio) {
+			while (aux->abajo != NULL)
+			{
+				if (aux->abajo == mes) {
+					while (aux->z != NULL)
+					{
+						if (aux->nombreAlbum==alb) {
+							return aux;
+						}
+					}
+				}
+				else {
+					aux = aux->abajo;
+				}
+			}
+		}
+		else {
+			aux = aux->derecha;
+		}
+	}
+	return NULL;
 }

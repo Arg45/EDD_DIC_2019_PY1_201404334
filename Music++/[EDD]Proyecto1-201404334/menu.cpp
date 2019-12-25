@@ -6,6 +6,8 @@
 using namespace std;
 
 Menu::Menu() {
+	artistas = new Artistas();
+
 	//cout << "menu en otra clase" << endl;
 	cout << " \n\nSeleccione el indice de la opcion que desee:\n\n  1. Cargar archivo .json\n  2. Salir\n" << endl;
 	cin >> var1;
@@ -37,9 +39,19 @@ void Menu::menu1() {
 		cout << "  Ingrese la ruta del archivo: " << endl;
 		cin.get();
 		getline(cin,urlOriginal);
-		Abrir::Abrir(urlOriginal, 1);		
-		cout << "\nRuta ingresada correctamente" << endl;
-		Menu::menu2();
+		Abrir a = Abrir::Abrir(urlOriginal, 1);		
+		cout << "\nRuta ingresada correctamente\n\n Desea cargar playlist?\n 1. Si \n 2. No" << endl;
+		cin >> var2;
+		if (var2 == 1) {
+			cout << "  Ingrese la ruta del archivo: " << endl;
+			cin.get();
+			getline(cin, urlOriginal);
+			Abrir::Abrir(urlOriginal,1);
+			cout << "Ruta ingresada correctamente" << endl;
+		}
+		else {
+			Menu::menu2();
+		}
 		break;
 	case 2:
 		cout << "  Ingrese la ruta del archivo: " << endl;

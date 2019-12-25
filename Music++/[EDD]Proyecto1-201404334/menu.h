@@ -14,10 +14,17 @@ using namespace std;
 
 class Menu {
 public:
+
+	Artista* artista;
+
+	Albumes* albumes;
+	Canciones* canciones;
+	Artistas* artistas;
+
 	Menu();
 	void menu1();
 	void menu2();
-	int var1;
+	int var1,var2;
 	string urlOriginal;
 private:
 

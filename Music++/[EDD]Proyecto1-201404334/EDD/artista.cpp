@@ -5,10 +5,11 @@ using namespace std;
 Artista::Artista(string nom, float rat) {
 	nombre = nom;
 	rating = rat;
+	albums = NULL;
 	siguiente = NULL;
 	anterior = NULL;
 }
-Album* Artista::existe(string c) {
+/*Album* Artista::existe(string c) {
 	Artista* aux = inicio;
 	while (aux != NULL) {
 		if (aux->nombre == c) {
@@ -17,4 +18,4 @@ Album* Artista::existe(string c) {
 		aux = aux->siguiente;
 	}
 	return aux;
-}
+}*/

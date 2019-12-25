@@ -10,13 +10,13 @@ class Album {
 public:
 	string nombreAlbum, mes, anio;
 	float rating;
-	Canciones* listaCanciones;
+	Canciones* listaCan;
 	Album* derecha;//columnas
 	Album* izquierda;//filas
 	Album* arriba;
 	Album* abajo;
 	Album* z;
-	Album(string nommbre, string mes, string anio, float rating);
+	Album(string nommbre, string mes, string anio, float rating, Canciones* listaCanciones);
 
 private:
 

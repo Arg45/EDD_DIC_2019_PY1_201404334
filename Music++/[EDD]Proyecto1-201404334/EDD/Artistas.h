@@ -11,7 +11,7 @@ public:
 	Artista* fin;
 	Albumes* album;
 	Artistas();
-	void insertar(string nombre, float rating);
+	void insertar(Artista* nodoArtista);
 	Artista* existe(string nombreArtista);
 private:
 

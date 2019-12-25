@@ -6,8 +6,7 @@ Artistas::Artistas() {
 	inicio = NULL;
 	fin = NULL;
 }
-void Artistas::insertar(string nom, float rat){
-	Artista* nuevo = new Artista(nom, rat);
+void Artistas::insertar(Artista* nuevo){
 	if (inicio == NULL) {//vacia
 		inicio = fin = nuevo;
 	}
